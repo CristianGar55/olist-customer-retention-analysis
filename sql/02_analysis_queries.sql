@@ -5,7 +5,6 @@
 -- are still active in each subsequent month.
 
 WITH first_purchase AS (
-    -- Each customer's first purchase month = their cohort
     SELECT
         c.customer_unique_id,
         DATE_FORMAT(MIN(o.order_purchase_timestamp), '%Y-%m-01') AS cohort_month
@@ -15,7 +14,6 @@ WITH first_purchase AS (
 ),
 
 orders_by_month AS (
-    -- Every order a customer made, tagged with the month it happened
     SELECT
         c.customer_unique_id,
         DATE_FORMAT(o.order_purchase_timestamp, '%Y-%m-01') AS order_month
@@ -24,7 +22,6 @@ orders_by_month AS (
 ),
 
 cohort_activity AS (
-    -- Month index: 0 = cohort month itself, 1 = one month later, etc.
     SELECT
         fp.cohort_month,
         obm.customer_unique_id,
@@ -34,7 +31,6 @@ cohort_activity AS (
 ),
 
 cohort_size AS (
-    -- Total customers in each cohort (month_index = 0)
     SELECT
         cohort_month,
         COUNT(DISTINCT customer_unique_id) AS total_customers
@@ -44,7 +40,6 @@ cohort_size AS (
 ),
 
 cohort_counts AS (
-    -- Active customers per cohort per month_index
     SELECT
         cohort_month,
         month_index,
