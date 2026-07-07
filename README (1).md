@@ -4,15 +4,15 @@ A SQL and Tableau deep-dive into why most customers on a Brazilian e-commerce ma
 
 **[View the interactive retention heatmap →](https://public.tableau.com/app/profile/cristian.garcia3939/viz/OlistCustomerRetentionAnalysis/RetentionHeatmap)**
 
-## The question
+## Business Question
 
 Most e-commerce dashboards focus on revenue and top products. This project looks at something less obvious but more important long-term: do customers actually come back? And if not, is there anything in the data (delivery speed, review scores, timing) that hints at why.
 
-## The data
+## Dataset
 
 The [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) from Kaggle. About 99,000 real orders spread across five separate tables: customers, orders, order items, payments, and reviews. Rather than working off a single pre-cleaned CSV, the database was built from scratch. Schema designed, each table loaded from raw CSVs into MySQL, then joined across tables to answer the questions below. That process alone covers more relational-data ground than a single-table project would.
 
-## What the data shows
+## Key Findings
 
 **Only about 3% of customers ever placed a second order.** Out of roughly 99,000 customers, just 2,997 came back. When they did return, it took an average of 80 days.
 
@@ -41,4 +41,4 @@ A 3% repeat rate means this business is almost entirely dependent on acquiring n
 
 ## Next steps
 
-Segmenting retention by product category and region would show whether certain types of purchases drive more repeat behavior. The July 2018 cohort is worth digging into to find out what actually happened that month. And the delivery/review gap deserves a proper significance test, since right now it's reported as a real but modest pattern, not a proven cause.
+Breaking retention down by product category and region would help identify which types of purchases actually drive repeat behavior. The July 2018 cohort still needs a closer look to figure out what made that month different. The delivery/review connection should be tested for statistical significance before it's treated as more than a modest, observed pattern.
